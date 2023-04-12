@@ -1,5 +1,6 @@
 import streamlit as st
 import datetime
+import pytz
 from utils.predicthq import get_api_key, get_predicthq_client
 from utils.code_examples import get_code_example
 
@@ -109,7 +110,8 @@ def show_sidebar_options():
     )
 
     # Prepare the date range (today + 30d as the default)
-    today = datetime.date.today()
+    tz = pytz.timezone(location["tz"])
+    today = datetime.datetime.now(tz).date()
     date_options = [
         {
             "name": "Next 7 days",
