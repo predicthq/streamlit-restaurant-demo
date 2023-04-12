@@ -114,27 +114,34 @@ def show_sidebar_options():
     today = datetime.datetime.now(tz).date()
     date_options = [
         {
+            "id": "next_7_days",
             "name": "Next 7 days",
             "date_from": today,
             "date_to": today + datetime.timedelta(days=7),
         },
         {
+            "id": "next_30_days",
             "name": "Next 30 days",
             "date_from": today,
             "date_to": today + datetime.timedelta(days=30),
         },
         {
+            "id": "next_90_days",
             "name": "Next 90 days",
             "date_from": today,
             "date_to": today + datetime.timedelta(days=90),
         },
     ]
 
-    index = (
-        date_options.index(st.session_state.daterange)
-        if "daterange" in st.session_state
-        else 0
-    )
+    # Work out which date is currently selected
+    index = 0
+
+    if "daterange" in st.session_state:
+        for idx, date_option in enumerate(date_options):
+            if st.session_state["daterange"]["id"] == date_option["id"]:
+                index = idx
+                break
+
     st.sidebar.selectbox(
         "Date Range",
         date_options,
