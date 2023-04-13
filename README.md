@@ -20,7 +20,7 @@ $
 $ streamlit run map.py
 ```
 
-You'll need to get an API token by following the instructions at [https://docs.predicthq.com/oauth2/introduction](https://docs.predicthq.com/oauth2/introduction) and create a [Streamlit secrets](https://docs.streamlit.io/streamlit-community-cloud/get-started/deploy-an-app/connect-to-data-sources/secrets-management) file `.streamlit/secrets.toml` with the following contents:
+You'll need to get an API token by following the instructions at [https://docs.predicthq.com/api/authenticating](https://docs.predicthq.com/api/authenticating) and create a [Streamlit secrets](https://docs.streamlit.io/streamlit-community-cloud/get-started/deploy-an-app/connect-to-data-sources/secrets-management) file `.streamlit/secrets.toml` with the following contents:
 
 ```
 api_key = "<your API token>"
