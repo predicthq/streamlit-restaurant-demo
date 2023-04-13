@@ -134,7 +134,7 @@ def show_sidebar_options():
     ]
 
     # Work out which date is currently selected
-    index = 0
+    index = 2  # Default to next 90 days
 
     if "daterange" in st.session_state:
         for idx, date_option in enumerate(date_options):
