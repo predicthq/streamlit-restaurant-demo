@@ -116,14 +116,20 @@ def show_events_list(events, filename="events"):
             "category": event["category"],
             "start_date_local": event["start"]
             .astimezone(pytz.timezone(event["timezone"]))
-            .isoformat(),
+            .isoformat()
+            if event["timezone"] is not None
+            else event["start"].isoformat(),
             "end_date_local": event["end"]
             .astimezone(pytz.timezone(event["timezone"]))
-            .isoformat(),
+            .isoformat()
+            if event["timezone"] is not None
+            else event["end"].isoformat(),
             "predicted_end_date_local": event["predicted_end"]
             .astimezone(pytz.timezone(event["timezone"]))
             .isoformat()
-            if "predicted_end" in event and event["predicted_end"] is not None
+            if "predicted_end" in event
+            and event["predicted_end"] is not None
+            and event["timezone"] is not None
             else "",
             "venue_name": venue["name"] if venue else "",
             "venue_address": venue["formatted_address"] if venue else "",
